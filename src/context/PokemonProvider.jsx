@@ -55,8 +55,7 @@ export const PokemonProvider = ({children}) => {
       return data;
     });
     const results = await Promise.all(promises);
-
-    console.log(results);
+    
     setGlobalPokemons(results);
     setLoading(false);
   }

@@ -39,7 +39,7 @@ body{
 /* Globales */
 .container{
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 0 14rem;
 }
 
 /* header */
@@ -257,7 +257,7 @@ header form{
     position: fixed;
     top: 0;
     left: -300px;
-    width: 200px;
+    width: 12rem;
     
     color: #555;
     background-color: #f2f2f2;
