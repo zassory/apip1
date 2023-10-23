@@ -61,13 +61,14 @@ export const PokemonProvider = ({children}) => {
   }
 
   // Por id
-  const getPokemonById = async(id) => {
+  const getPokemonById = async id => {
     const baseUrl = 'https://pokeapi.co/api/v2/';
 
     const res = await fetch(`${baseUrl}pokemon/${id}`);
     const data = await res.json();
     return data;
   }
+  
 
   useEffect(()=> {
     getAllPokemons()

@@ -1,13 +1,16 @@
-import React from 'react'
+import React , { useContext } from 'react';
+import { PokemonContext } from '../context/PokemonContext';
 
 export const FilterBar = () => {
+
+  const { active } = useContext(PokemonContext);
 
   const handleCheckbox = ()=> {
 
   }
 
   return (
-    <div className={`container-filters active`}>
+    <div className={`container-filters ${active ? 'active' : ''}`}>
     <div className='filter-by-type'>
         <span>Tipo</span>
 
