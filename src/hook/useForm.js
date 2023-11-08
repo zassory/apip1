@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+/**
+ * 
+ * @param {*} initialForm 
+ * @returns formState deses
+ * @returns form completo
+ * @returns onInputChange la funcion que me setea los valores del form
+ * @returns para resetear el formulario
+ */
 export const useForm = (initialForm = {}) => {
     const [formState, setFormState] = useState(initialForm);
 

@@ -1,7 +1,11 @@
 import React from 'react'
+import { DotSpinner } from '@uiball/loaders';
 
 export const Loader = () => {
+  
   return (
-    <div>Loader</div>
+    <div className='container-loader'>
+      <DotSpinner size={ 40 } speed={0.9} colors='black' />
+    </div>
   )
 }

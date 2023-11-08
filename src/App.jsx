@@ -1,4 +1,5 @@
 import { AppRouter } from "./AppRouter"
+//Context
 import { PokemonProvider } from "./context/PokemonProvider"
 
 function App() {

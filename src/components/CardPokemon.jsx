@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export const CardPokemon = ({pokemon}) => {
-        
-    const { name , id } = pokemon;
+
+  const { name , id } = pokemon;
+    
 
   return (
     <Link to={`/pokemon/${pokemon.id}`} className='card-pokemon'>

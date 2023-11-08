@@ -9,7 +9,7 @@ export const PokemonList = () => {
   return (
     <>
         <div className="card-list-pokemon container">
-            {allPokemons.map( (pokemon) => <CardPokemon pokemon={pokemon} key={pokemon.id} />)}
+            {allPokemons.map( pokemon => <CardPokemon pokemon={pokemon} key={pokemon.id} />)}
         </div>
     </>
   )

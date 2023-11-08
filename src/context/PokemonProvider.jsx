@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+
 import { PokemonContext } from "./PokemonContext"
 import { useForm } from "../hook/useForm";
 
 export const PokemonProvider = ({children}) => {
 
-  const [allPokemons, setAllPokemons] = useState([]);
+  const [allPokemons, setAllPokemons] = useState([]);//Aqui van todos los pokemons
   const [globalPokemons, setGlobalPokemons] = useState([]);
   const [offset,setOffSet] = useState(0);
   
@@ -43,36 +44,51 @@ export const PokemonProvider = ({children}) => {
   }
 
   // Global Pokemons
-  const getGlobalPokemons = async() => {
-    const baseUrl = 'https://pokeapi.co/api/v2/';
+    const getGlobalPokemons = async() => {
+      
+      //https://pokeapi.co/api/v2/pokemon/charmander
+      const baseUrl = 'https://pokeapi.co/api/v2/';
 
-    const res = await fetch(`${baseUrl}pokemon?limit=100000&offset=0`);
-    const data = await res.json();
-
-    const promises = data.results.map(async(pokemon) => {
-      const res = await fetch(pokemon.url);
+      const res = await fetch(`${baseUrl}pokemon?limit=100000&offset=0`);
+      //const res = await fetch(`${baseUrl}pokemon/${value}`)
       const data = await res.json();
-      return data;
-    });
-    const results = await Promise.all(promises);
-    
-    setGlobalPokemons(results);
-    setLoading(false);
-  }
 
-  // Por id
+      const promises = data.results.map(async(pokemon) => {
+        const res = await fetch(pokemon.url);
+        const data = await res.json();
+       return data;
+      });
+      const results = await Promise.all(promises);
+    
+      setGlobalPokemons(results);
+      setLoading(false);
+    }
+
+  /**
+   * 
+   * @param { id } id 
+   * @returns data pokemon by id
+   */
   const getPokemonById = async id => {
+    
     const baseUrl = 'https://pokeapi.co/api/v2/';
 
     const res = await fetch(`${baseUrl}pokemon/${id}`);
     const data = await res.json();
+    
     return data;
   }
-  
 
+  /**
+   * Para cargas mas data
+   */
+  const onClickLoadMore = () => {
+    setOffSet(offset + 50);
+  }
+  
   useEffect(()=> {
     getAllPokemons()
-  },[]);
+  },[offset]);
 
   useEffect(()=> {
     getGlobalPokemons()
@@ -85,7 +101,8 @@ export const PokemonProvider = ({children}) => {
       onResetForm,
       allPokemons,
       globalPokemons,
-      getPokemonById
+      getPokemonById,
+      onClickLoadMore,
     }}>
         { children }
     </PokemonContext.Provider>
